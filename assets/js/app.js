@@ -24,12 +24,16 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   $scope.editApology = function(apology) {
     $location.path('/edit/' + apology.id);
   };
+
+  $scope.showUser = function(user) {
+    $location.path('/' + user.name.split(' ').join('-'));
+  };
 }])
 
 .controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {
 
   $scope.params = $routeParams;
-  $scope.username = $scope.params.userName ? $scope.params.userName.split('-').join(' ') : null;;
+  $scope.username = $scope.params.userName ? $scope.params.userName.split('-').join(' ') : null;
 
   $scope.page = 1;
   $scope.pageSize = 10;

@@ -6,7 +6,10 @@
     <img class="ui small circular image" ng-src="{{apology.user.photoUrl}}">
     <div class="content">
       {{apology.title}}
-      <div class="sub header"><span class="date" am-time-ago="apology.createdAt"></span></div>
+      <div class="sub header">
+        <a ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name}}</a>
+        <span class="date" am-time-ago="apology.createdAt"></span>
+      </div>
     </div>
   </h1>
   <p style="font-size: 1.25em; margin-top: 1em;">

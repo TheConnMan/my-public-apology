@@ -1,17 +1,41 @@
-angular.module('app', ['ngResource', 'ngRoute', 'angularMoment'])
+angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scroll'])
 .controller('MainController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {
 
   $scope.Apology = $resource('/apology/:apologyId', {
     apologyId: '@id'
   });
+}])
+
+.controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {
+
+  $scope.page = 1;
+  $scope.pageSize = 10;
+  $scope.done = false;
+  $scope.loading = false;
 
   $scope.apologies = $scope.Apology.query({
-    limit: 20,
+    limit: $scope.pageSize,
     sort: 'createdAt DESC'
   });
 
   $scope.viewApology = function(apology) {
     $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
+  };
+
+  $scope.nextPage = function() {
+    if (!$scope.done && !$scope.loading) {
+      $scope.loading = true;
+      $scope.Apology.query({
+        limit: $scope.pageSize,
+        skip: $scope.pageSize * $scope.page,
+        sort: 'createdAt DESC'
+      }).$promise.then(function(apologies) {
+        $scope.apologies = $scope.apologies.concat(apologies);
+        $scope.page++;
+        $scope.done = $scope.done || apologies.length === 0;
+        $scope.loading = false;
+      });
+    }
   };
 }])
 
@@ -48,7 +72,8 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment'])
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/', {
-      templateUrl : "/templates/index.html"
+      templateUrl : "/templates/index.html",
+      controller: 'LandingController'
   })
  .when('/create', {
     templateUrl: '/templates/createApology.html',

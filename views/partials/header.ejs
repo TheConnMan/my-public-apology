@@ -1,0 +1,24 @@
+<div class="ui top attached menu" style="margin-bottom: 1em;">
+  <div class="left menu">
+    <div class="item">
+      <i class="big comments outline icon"></i>
+    </div>
+    <a class="item" href="<%= user ? '/auth/logout' : '/auth/google' %>">
+      <% if (user) { %>
+        <i class="sign out icon"></i>
+        <%= user.name %>
+      <% } else { %>
+        <i class="google icon"></i>
+        Login
+      <% } %>
+    </a>
+  </div>
+  <div class="right menu">
+    <a class="ui item" style="opacity: .75;">
+      My Public Apology v<%= sails.config.globals.version %>
+    </a>
+    <a class="icon item" href="https://github.com/TheConnMan/my-public-apology/issues" target="_blank" title="Open an Issue">
+      <i class="large github icon"></i>
+    </a>
+  </div>
+</div>

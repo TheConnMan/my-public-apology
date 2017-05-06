@@ -12,6 +12,18 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   $scope.createApology = function() {
     $location.path('/create');
   };
+
+  $scope.myApology = function(apology) {
+    return apology.user && apology.user.id === userId;
+  };
+
+  $scope.viewApology = function(apology) {
+    $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
+  };
+
+  $scope.editApology = function(apology) {
+    $location.path('/edit/' + apology.id);
+  };
 }])
 
 .controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {
@@ -25,10 +37,6 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
     limit: $scope.pageSize,
     sort: 'createdAt DESC'
   });
-
-  $scope.viewApology = function(apology) {
-    $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
-  };
 
   $scope.nextPage = function() {
     if (!$scope.done && !$scope.loading) {

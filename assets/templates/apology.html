@@ -1,4 +1,7 @@
 <div class="ui piled segment">
+  <a class="ui yellow right corner label" ng-if="myApology(apology)" ng-click="editApology(apology)">
+    <i class="write icon" style="cursor: pointer;"></i>
+  </a>
   <h1 class="ui icon header" style="margin: 0 auto; display: block;">
     <img class="ui small circular image" ng-src="{{apology.user.photoUrl}}">
     <div class="content">

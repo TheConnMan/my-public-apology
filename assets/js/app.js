@@ -18,7 +18,7 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   };
 
   $scope.viewApology = function(apology) {
-    $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
+    $location.path('/apology/' + apology.user.name.split(' ').join('-') + '/' + apology.id);
   };
 
   $scope.editApology = function(apology) {
@@ -28,12 +28,16 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
 
 .controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {
 
+  $scope.params = $routeParams;
+  $scope.username = $scope.params.userName ? $scope.params.userName.split('-').join(' ') : null;;
+
   $scope.page = 1;
   $scope.pageSize = 10;
   $scope.done = false;
   $scope.loading = false;
 
   $scope.apologies = $scope.Apology.query({
+    username: $scope.username,
     limit: $scope.pageSize,
     sort: 'createdAt DESC'
   });
@@ -42,6 +46,7 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
     if (!$scope.done && !$scope.loading) {
       $scope.loading = true;
       $scope.Apology.query({
+        username: $scope.username,
         limit: $scope.pageSize,
         skip: $scope.pageSize * $scope.page,
         sort: 'createdAt DESC'
@@ -70,7 +75,7 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
         apologyId: apology.id
       }).$promise;
     }).then(function(apology) {
-      $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
+      $location.path('/apology/' + apology.user.name.split(' ').join('-') + '/' + apology.id);
     }).catch(function(err) {
       $scope.error = err.data;
     });
@@ -102,5 +107,9 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
  .when('/apology/:user/:apologyId', {
     templateUrl: '/templates/apology.html',
     controller: 'ApologyController'
+  })
+  .when('/:userName', {
+      templateUrl : "/templates/index.html",
+      controller: 'LandingController'
   });
 }]);

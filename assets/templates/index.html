@@ -1,5 +1,5 @@
 <div class="ui segment">
-  <h2 class="ui dividing header">Recent Apologies</h2>
+  <h2 class="ui dividing header">Recent Apologies{{ username ? ' - ' + username : ''}}</h2>
   <div class="ui divided items" infinite-scroll="nextPage()">
     <div class="item" ng-repeat="apology in apologies | orderBy:'+': apology.createdAt track by $index">
       <div class="ui tiny image">

@@ -1,0 +1,12 @@
+<div class="ui piled segment">
+  <h1 class="ui icon header" style="margin: 0 auto; display: block;">
+    <img class="ui small circular image" ng-src="{{apology.user.photoUrl}}">
+    <div class="content">
+      {{apology.title}}
+      <div class="sub header"><span class="date" am-time-ago="apology.createdAt"></span></div>
+    </div>
+  </h1>
+  <p style="font-size: 1.25em; margin-top: 1em;">
+    {{apology.note}}
+  </p>
+</div>

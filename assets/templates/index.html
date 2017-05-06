@@ -1,0 +1,27 @@
+<h1 class="ui dividing header">
+  <i class="comments outline icon"></i>
+  <div class="content">
+    My Public Apology
+    <div class="sub header">Publically apologize so others know you really mean it - A forum to submit and read public apologies</div>
+  </div>
+</h1>
+<h2 class="ui dividing header">Recent Apologies</h2>
+<div class="ui divided items">
+  <div class="item" ng-repeat="apology in apologies | orderBy:'+': apology.createdAt track by $index">
+    <div class="ui tiny image">
+      <img ng-src="{{apology.user.photoUrl}}">
+    </div>
+    <div class="content">
+      <a class="header">{{apology.title}}</a>
+      <div class="meta">
+        {{apology.user.name}}
+      </div>
+      <div class="description">
+        <p>{{apology.note}}</p>
+      </div>
+      <div class="extra">
+        <span class="date" am-time-ago="apology.createdAt"></span>
+      </div>
+    </div>
+  </div>
+</div>

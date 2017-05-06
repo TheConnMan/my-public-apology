@@ -28,6 +28,10 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   $scope.showUser = function(user) {
     $location.path('/' + user.name.split(' ').join('-'));
   };
+
+  $scope.myApologies = function() {
+    $location.path('/' + username.split(' ').join('-'));
+  };
 }])
 
 .controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {

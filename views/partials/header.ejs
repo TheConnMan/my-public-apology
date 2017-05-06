@@ -15,6 +15,12 @@
     <a class="item" ng-click="landingPage()">
       <i class="home icon"></i> Home
     </a>
+    <% if (user) { %>
+      <a class="item" ng-click="myApologies()">
+        <i class="user icon"></i>
+        My Apologies
+      </a>
+    <% } %>
   </div>
   <div class="right menu">
     <a class="item" ng-click="createApology()">

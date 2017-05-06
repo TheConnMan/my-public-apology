@@ -4,6 +4,14 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   $scope.Apology = $resource('/apology/:apologyId', {
     apologyId: '@id'
   });
+
+  $scope.landingPage = function() {
+    $location.path('/');
+  };
+
+  $scope.createApology = function() {
+    $location.path('/create');
+  };
 }])
 
 .controller('LandingController', ['$scope', '$resource', '$route', '$routeParams', '$location', function($scope, $resource, $route, $routeParams, $location) {

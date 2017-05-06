@@ -15,6 +15,28 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment'])
   };
 }])
 
+.controller('CreateApologyController', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
+  $scope.params = $routeParams;
+
+  $scope.apologyId = $scope.params.apologyId;
+
+  $scope.apology = $scope.apologyId ? $scope.Apology.get({
+    apologyId: $scope.params.apologyId
+  }) : new $scope.Apology();
+
+  $scope.save = function() {
+    $scope.apology.$save().then(function(apology) {
+      return $scope.Apology.get({
+        apologyId: apology.id
+      }).$promise;
+    }).then(function(apology) {
+      $location.path('/apology/' + apology.user.name.toLowerCase().split(' ').join('-') + '/' + apology.id);
+    }).catch(function(err) {
+      $scope.error = err.data;
+    });
+  };
+}])
+
 .controller('ApologyController', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
   $scope.params = $routeParams;
 
@@ -27,6 +49,14 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment'])
   $routeProvider
   .when('/', {
       templateUrl : "/templates/index.html"
+  })
+ .when('/create', {
+    templateUrl: '/templates/createApology.html',
+    controller: 'CreateApologyController'
+  })
+ .when('/edit/:apologyId', {
+    templateUrl: '/templates/createApology.html',
+    controller: 'CreateApologyController'
   })
  .when('/apology/:user/:apologyId', {
     templateUrl: '/templates/apology.html',

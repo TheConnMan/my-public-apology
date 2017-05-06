@@ -1,0 +1,21 @@
+<div class="ui segment">
+  <h2 class="ui dividing header">{{apologyId ? 'Edit' : 'Create'}} Apology</h2>
+  <div class="ui negative message" ng-if="error">
+    <i class="close icon"></i>
+    <div class="header">Error</div>
+    <p>{{error}}</p>
+  </div>
+  <form class="ui form">
+    <div class="field">
+      <label>Title</label>
+      <input type="text" ng-model="apology.title" maxlength="60" placeholder="Apology title">
+    </div>
+    <div class="field">
+      <label>Text</label>
+      <textarea ng-model="apology.note" placeholder="Your most heartfelt apology. Really make it count." style="height: 20em;"></textarea>
+    </div>
+    <div class="field" style="text-align: center;">
+      <button class="ui big primary button" ng-click="save()">{{apologyId ? 'Save' : 'Submit'}}</button>
+    </div>
+  </form>
+</div>

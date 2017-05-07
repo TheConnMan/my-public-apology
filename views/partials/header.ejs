@@ -23,9 +23,11 @@
     <% } %>
   </div>
   <div class="right menu">
-    <a class="item" ng-click="createApology()">
-      <i class="write icon"></i> Create
-    </a>
+    <% if (user) { %>
+      <a class="item" ng-click="createApology()">
+        <i class="write icon"></i> Create
+      </a>
+    <% } %>
     <a class="ui item" style="opacity: .75;">
       My Public Apology v<%= sails.config.globals.version %>
     </a>

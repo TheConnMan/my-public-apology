@@ -12,9 +12,6 @@
         Login
       <% } %>
     </a>
-    <a class="item" ng-click="landingPage()">
-      <i class="home icon"></i> Home
-    </a>
     <% if (user) { %>
       <a class="item" ng-click="myApologies()">
         <i class="user icon"></i>
@@ -29,7 +26,7 @@
       </a>
     <% } %>
     <a class="ui item" style="opacity: .75;">
-      My Public Apology v<%= sails.config.globals.version %>
+      v<%= sails.config.globals.version %>
     </a>
     <a class="icon item" href="https://github.com/TheConnMan/my-public-apology/issues" target="_blank" title="Open an Issue">
       <i class="large github icon"></i>

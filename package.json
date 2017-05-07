@@ -1,7 +1,7 @@
 {
   "name": "my-public-apology",
   "version": "0.1.0",
-  "description": "Publically apologize to show that you really mean it",
+  "description": "Publicly apologize to show that you really mean it",
   "keywords": [],
   "dependencies": {
     "db-migrate": "^0.10.0-beta.20",

@@ -8,10 +8,11 @@
       <div class="content">
         <a class="header" ng-click="viewApology(apology)">{{apology.title}}</a>
         <div class="meta">
-          <a ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name}}</a>
+          <a class="ui" ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name}}</a>
         </div>
         <div class="description">
           <p>{{apology.note.length > 300 ? apology.note.substring(0, 299) + '...' : apology.note}}</p>
+          <p><a ng-click="viewApology(apology)">Read More</a></p>
         </div>
         <div class="extra">
           <span class="date" am-time-ago="apology.createdAt"></span>

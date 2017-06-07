@@ -96,11 +96,15 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   };
 }])
 
-.controller('ApologyController', ['$scope', '$route', '$routeParams', '$location', function($scope, $route, $routeParams, $location) {
+.controller('ApologyController', ['$scope', '$route', '$routeParams', '$location', '$http', function($scope, $route, $routeParams, $location, $http) {
   $scope.params = $routeParams;
 
   $scope.apology = $scope.Apology.get({
     apologyId: $scope.params.apologyId
+  }, function() {
+    if ($scope.apology.id) {
+      $http.get('/apology/view/' + $scope.apology.id);
+    }
   });
 }])
 

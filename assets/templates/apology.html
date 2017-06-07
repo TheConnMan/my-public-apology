@@ -8,7 +8,8 @@
       {{apology.title}}
       <div class="sub header">
         <a ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name}}</a>
-        <span class="date" am-time-ago="apology.createdAt"></span>
+        <span class="date" am-time-ago="apology.createdAt"></span><br />
+        {{apology.views ? apology.views + 1 : 1}} view{{apology.views ? 's' : ''}}
       </div>
     </div>
   </h1>

@@ -45,16 +45,12 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   $scope.params = $routeParams;
   $scope.username = $scope.params.userName ? $scope.params.userName.split('-').join(' ') : null;
 
-  $scope.page = 1;
+  $scope.page = 0;
   $scope.pageSize = 10;
   $scope.done = false;
   $scope.loading = false;
 
-  $scope.apologies = $scope.Apology.query({
-    username: $scope.username,
-    limit: $scope.pageSize,
-    sort: 'createdAt DESC'
-  });
+  $scope.apologies = [];
 
   $scope.nextPage = function() {
     if (!$scope.done && !$scope.loading) {

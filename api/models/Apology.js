@@ -20,13 +20,15 @@ module.exports = {
   },
 
   afterCreate: function(record, cb) {
-    if (client) {
+    if (client && sails.config.globals.twitter.tweetNewApologies) {
       (record.user ? User.findOne({ id: record.user}) : Promise.resolve()).then(user => {
         var apologyLink = sails.config.serverUrl + '/#!/apology/' + (user ? user.name.split(' ').join('-') + '/' : '') + record.id;
-        var status = 'New apology from ' + (user ? user.name : '@' + record.tweetUser) + '! ' + apologyLink + (record.tweetId ? ' ' + getTweetUrl(record) : '');
+        var status = 'New public apology from ' + (user ? user.name : '@' + record.tweetUser) + '! ' + apologyLink + (record.tweetId ? ' ' + getTweetUrl(record) : '');
         client.post('statuses/update', {status: status}, function(error, tweet, response) {
           if (error) {
             logger.error(error);
+          } else {
+            logger.info('Tweet created: https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str);
           }
           cb();
         });

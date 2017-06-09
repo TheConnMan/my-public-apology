@@ -23,6 +23,7 @@ module.exports.globals = {
       access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
       access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
     }) : null,
-    tracker: process.env.TWITTER_TRACKER
+    tracker: process.env.TWITTER_TRACKER,
+    tweetNewApologies: process.env.TWITTER_TWEET_NEW === 'true'
   }
 };

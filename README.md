@@ -45,5 +45,6 @@ When developing a new migration script run `grunt db:migrate:create --name=<migr
 - **TWITTER_ACCESS_TOKEN_KEY** (Optional) - [Twitter Application](https://apps.twitter.com) token key for consuming tweets
 - **TWITTER_ACCESS_TOKEN_SECRET** (Optional) - [Twitter Application](https://apps.twitter.com) token secret for consuming tweets
 - **TWITTER_TRACKER** (Optional) - Tracker (e.g. `#mypublicapology` or `@mypublicapology`) used to filter incoming tweets to consume
+- **TWITTER_TWEET_NEW** (default: false) - Tweet out new apologies with the given Twitter credentials
 - **FLUENTD_HOST** (Optional) Fluent host for logging
 - **FLUENTD_TAGS** (Optional) Add FluentD context tags (format is tag:value,tag2:value2)

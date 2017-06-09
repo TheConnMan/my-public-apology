@@ -30,7 +30,8 @@
     "sails-db-migrate": "^1.5.0",
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.11.5",
-    "sails-persistence-logger": "^0.2.0"
+    "sails-persistence-logger": "^0.2.0",
+    "twitter": "^1.7.0"
   },
   "scripts": {
     "debug": "node debug app.js",

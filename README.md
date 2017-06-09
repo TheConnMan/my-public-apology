@@ -40,5 +40,10 @@ When developing a new migration script run `grunt db:migrate:create --name=<migr
 - **GOOGLE_ID** - Google OAuth application ID (set up a [Google App](https://cloud.google.com/console#/project), create OAuth credentials, and enable the Google+ API)
 - **GOOGLE_SECRET** - Google OAuth secret key
 - **GOOGLE_ANALYTICS_ID** (Optional) - [Google Analytics](https://analytics.google.com/) Tracking ID for site analytics
+- **TWITTER_CONSUMER_KEY** (Optional) - [Twitter Application](https://apps.twitter.com) consumer key for consuming tweets
+- **TWITTER_CONSUMER_SECRET** (Optional) - [Twitter Application](https://apps.twitter.com) consumer secret for consuming tweets
+- **TWITTER_ACCESS_TOKEN_KEY** (Optional) - [Twitter Application](https://apps.twitter.com) token key for consuming tweets
+- **TWITTER_ACCESS_TOKEN_SECRET** (Optional) - [Twitter Application](https://apps.twitter.com) token secret for consuming tweets
+- **TWITTER_TRACKER** (Optional) - Tracker (e.g. `#mypublicapology` or `@mypublicapology`) used to filter incoming tweets to consume
 - **FLUENTD_HOST** (Optional) Fluent host for logging
 - **FLUENTD_TAGS** (Optional) Add FluentD context tags (format is tag:value,tag2:value2)

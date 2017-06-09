@@ -66,5 +66,7 @@ module.exports.bootstrap = function(cb) {
     }));
   }
 
+  TwitterService.init();
+
   cb();
 };

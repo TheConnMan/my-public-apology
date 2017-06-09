@@ -24,7 +24,7 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   };
 
   $scope.viewApology = function(apology) {
-    $location.path('/apology/' + apology.user.name.split(' ').join('-') + '/' + apology.id);
+    $location.path('/apology/' + (apology.user ? apology.user.name.split(' ').join('-') + '/' : '') + apology.id);
   };
 
   $scope.editApology = function(apology) {
@@ -32,7 +32,9 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   };
 
   $scope.showUser = function(user) {
-    $location.path('/' + user.name.split(' ').join('-'));
+    if (user) {
+      $location.path('/' + user.name.split(' ').join('-'));
+    }
   };
 
   $scope.myApologies = function() {
@@ -117,6 +119,10 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
  .when('/edit/:apologyId', {
     templateUrl: '/templates/createApology.html',
     controller: 'CreateApologyController'
+  })
+ .when('/apology/:apologyId', {
+    templateUrl: '/templates/apology.html',
+    controller: 'ApologyController'
   })
  .when('/apology/:user/:apologyId', {
     templateUrl: '/templates/apology.html',

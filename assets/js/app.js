@@ -1,6 +1,8 @@
 angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scroll'])
 .controller('MainController', ['$scope', '$resource', '$route', '$routeParams', '$location', '$window', function($scope, $resource, $route, $routeParams, $location, $window) {
 
+  $scope.user = username;
+
   $scope.$on('$viewContentLoaded', function(event) {
     if ($window.ga) {
       $window.ga('send', 'pageview', { page: $location.url() });

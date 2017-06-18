@@ -3,18 +3,20 @@
     <i class="write icon" style="cursor: pointer;"></i>
   </a>
   <h1 class="ui icon header" style="margin: 0 auto; display: block;">
-    <img class="ui small circular image" ng-src="{{apology.user.photoUrl}}">
+    <img class="ui small circular image" ng-src="{{apology.user.photoUrl || apology.tweetImage}}">
     <div class="content">
       {{apology.title}}
       <div class="sub header">
-        <a ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name}}</a>
-        <span class="date" am-time-ago="apology.createdAt"></span>
+        <a ng-click="showUser(apology.user)" style="cursor: pointer;">{{apology.user.name || apology.tweetUser}}</a>
+        <span class="date" am-time-ago="apology.createdAt"></span><br />
+        {{apology.views ? apology.views + 1 : 1}} view{{apology.views ? 's' : ''}}<br />
+        <a ng-if="apology.tweetId" ng-href="{{'https://twitter.com/' + apology.tweetUser + '/status/' + apology.tweetId}}" target="_blank">{{'https://twitter.com/' + apology.tweetUser + '/status/' + apology.tweetId}}</a>
       </div>
     </div>
   </h1>
-  <h2 class="ui header">I, {{apology.user.name}}, hereby publicly apologize,</h2>
+  <h2 class="ui header">I, {{apology.user.name || apology.tweetUser}}, hereby publicly apologize,</h2>
   <p style="font-size: 1.25em;  white-space: pre-line;">
     {{apology.note}}
   </p>
-  <h3 class="ui right aligned header">- Sincerely, {{apology.user.name}}</h3>
+  <h3 class="ui right aligned header">- Sincerely, {{apology.user.name || apology.tweetUser}}</h3>
 </div>

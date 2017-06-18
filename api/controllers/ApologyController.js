@@ -73,6 +73,22 @@ module.exports = {
         return res.notFound();
       }
     });
+  },
+
+  view: function(req, res) {
+    return Apology.findOne({
+      id: req.params.id
+    }).then(apology => {
+      if (apology) {
+        apology.views = apology.views ? apology.views + 1 : 1;
+      }
+      return apology.save();
+    }).then(() => {
+      return res.ok();
+    }).catch(e => {
+      console.log(e);
+      return res.ok();
+    });
   }
 
 };

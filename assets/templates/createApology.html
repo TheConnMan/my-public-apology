@@ -7,12 +7,12 @@
   </div>
   <form class="ui form">
     <div class="field">
-      <label>Title</label>
       <input type="text" ng-model="apology.title" maxlength="60" placeholder="Apology title">
     </div>
     <div class="field">
-      <label>Text</label>
+      <h3 class="ui header">I, {{user}}, hereby publicly apologize,</h3>
       <textarea ng-model="apology.note" placeholder="Your most heartfelt apology. Really make it count." style="height: 20em;"></textarea>
+      <h3 class="ui right aligned header">- Sincerely, {{user}}</h3>
     </div>
     <div class="field" style="text-align: center;">
       <button class="ui big primary button" ng-click="save()">{{apologyId ? 'Save' : 'Submit'}}</button>

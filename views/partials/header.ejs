@@ -1,10 +1,13 @@
 <div class="ui top attached inverted blue menu" style="margin-bottom: 1em;">
   <div class="left menu">
-    <a class="item" ng-click="landingPage()">
-      <i class="big comments outline icon"></i>
+    <a class="item" ng-click="landingPage()" style="padding: .25em .75em;">
+      <img class="ui image" src="/images/mpa-logo-white.png" style="width: 4em;"></i>
     </a>
     <a class="item" href="https://twitter.com/mypublicapology" target="_blank">
-      <i class="large twitter icon" style="margin-right: 0;"></i>
+      <i class="big twitter icon" style="margin-right: 0;"></i>
+    </a>
+    <a class="icon item" href="https://github.com/TheConnMan/my-public-apology/issues" target="_blank" title="Open an Issue">
+      <i class="big github icon" style="margin-right: 0;"></i>
     </a>
     <% if (user) { %>
       <a class="item" ng-click="myApologies()">

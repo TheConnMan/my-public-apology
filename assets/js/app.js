@@ -112,8 +112,9 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
   });
 
   $scope.onSuccess = function(e) {
-    $(e.trigger).children('span').text('Link Copied!');
+    $(e.trigger).text('Link Copied!');
     $(e.trigger).removeClass('blue');
+    $(e.trigger).removeClass('labeled');
     $(e.trigger).addClass('green');
   };
 }])

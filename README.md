@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/TheConnMan/my-public-apology.svg?branch=master)](https://travis-ci.org/TheConnMan/my-public-apology) [![Docker Pulls](https://img.shields.io/docker/pulls/theconnman/my-public-apology.svg)](https://hub.docker.com/r/theconnman/my-public-apology/)
 
-Publicly apologies so others know you really mean it - A forum to submit and read public apologies
+Publicly apologize so others know you really mean it - A forum to submit and read public 
+apologies
 
 ## Local Development
 

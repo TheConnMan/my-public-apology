@@ -37,10 +37,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngInfiniteScroll/1.3.0/ng-infinite-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngclipboard/1.1.1/ngclipboard.min.js"></script>
 
     <script>
       var userId = <%= user ? user.id : null %>;
       var username = '<%= user ? user.name : null %>';
+      var server = '<%= server %>';
     </script>
 
     <script src="/js/dependencies/sails.io.js"></script>

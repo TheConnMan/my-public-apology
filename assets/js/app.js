@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scroll'])
+angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scroll', 'ngclipboard'])
 .controller('MainController', ['$scope', '$resource', '$route', '$routeParams', '$location', '$window', function($scope, $resource, $route, $routeParams, $location, $window) {
 
   $scope.user = username;
@@ -27,6 +27,10 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
 
   $scope.viewApology = function(apology) {
     $location.path('/apology/' + (apology.user ? apology.user.name.split(' ').join('-') + '/' : '') + apology.id);
+  };
+
+  $scope.shareApologyUrl = function(apology) {
+    return server + '/apology/' + (apology.user ? apology.user.name.split(' ').join('-') + '/' : '') + apology.id;
   };
 
   $scope.editApology = function(apology) {
@@ -106,6 +110,13 @@ angular.module('app', ['ngResource', 'ngRoute', 'angularMoment', 'infinite-scrol
       $http.get('/apology/view/' + $scope.apology.id);
     }
   });
+
+  $scope.onSuccess = function(e) {
+    $(e.trigger).text('Link Copied!');
+    $(e.trigger).removeClass('blue');
+    $(e.trigger).removeClass('labeled');
+    $(e.trigger).addClass('green');
+  };
 }])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

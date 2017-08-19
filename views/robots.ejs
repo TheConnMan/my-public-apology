@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= path %>" />
+    <meta property="og:title" content="<%= apology.title %> - <%= username %>" />
+    <%if (note) { %>
+      <meta property="og:description" content="<%= note %>" />
+    <% } %>
+    <meta property="og:site_name" content="My Public Apology"/>
+  </head>
+</html>
